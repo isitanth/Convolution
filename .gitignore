@@ -1,0 +1,44 @@
+# Build artifacts
+bin/
+obj/
+*.o
+*.so
+*.a
+*.dylib
+
+# Generated files
+*.csv
+*.dat
+*.log
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Debug files
+*.dSYM/
+core
+vgcore.*
+
+# Distribution packages
+*.tar.gz
+*.zip
+
+# OS specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Compiler-specific
+*.exe
+*.out
+a.out
