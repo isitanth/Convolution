@@ -50,7 +50,7 @@ int main() {
     printf("• Filter design\n");
     printf("• Neural networks\n\n");
     
-    init_visualization(800, 600);
+    init_visualization(1200, 800); // Increased resolution for better visualization
     
     int choice;
     do {

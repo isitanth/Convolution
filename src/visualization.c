@@ -217,12 +217,12 @@ int init_visualization(int width, int height) {
 
 void plot_signal(const Signal *signal, const char *title, int subplot) {
     printf("\n[Subplot %d] %s\n", subplot, title ? title : "Signal Plot");
-    plot_signal_ascii(signal, 60, 15); // 60 characters wide, 15 lines high
+    plot_signal_ascii(signal, 100, 25); // Increased to 100 characters wide, 25 lines high
 }
 
 void plot_fft(const FFTResult *fft, const char *title, int subplot) {
     printf("\n[Subplot %d] %s\n", subplot, title ? title : "FFT Plot");
-    plot_fft_ascii(fft, 60, 15, 1); // Show magnitude and phase info
+    plot_fft_ascii(fft, 100, 25, 1); // Increased to 100 characters wide, 25 lines high
 }
 
 void plot_convolution_demo(const Signal *input, const Signal *kernel, const Signal *output) {
@@ -247,7 +247,7 @@ void cleanup_visualization(void) {
 void plot_signal_detailed(const Signal *signal) {
     if (!signal) return;
     
-    plot_signal_ascii(signal, 80, 20);
+    plot_signal_ascii(signal, 120, 30); // Increased to 120 characters wide, 30 lines high
     
     // Calculate and display statistics
     double sum = 0.0, sum_sq = 0.0;
@@ -288,8 +288,8 @@ void plot_signals_comparison(const Signal *sig1, const Signal *sig2, const char 
     printf("Signal 2: %s\n\n", sig2->name);
     
     // Plot both signals with ASCII
-    plot_signal_ascii(sig1, 60, 12);
-    plot_signal_ascii(sig2, 60, 12);
+    plot_signal_ascii(sig1, 100, 20); // Increased resolution for comparison plots
+    plot_signal_ascii(sig2, 100, 20);
     
     // Compare basic properties
     printf("Comparison:\n");
