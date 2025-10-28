@@ -1,4 +1,4 @@
-# Convolution Explorer
+# Convolution explorer
 
 An interactive C application for understanding convolution in signal processing through visual and mathematical analysis.
 
@@ -6,7 +6,7 @@ An interactive C application for understanding convolution in signal processing 
 
 Convolution Explorer is a pure C implementation that demonstrates how convolution works in both time and frequency domains. It provides ASCII-based visualizations, multiple demo modes, and hands-on learning experiences without any external dependencies beyond the standard C library.
 
-## What is Convolution?
+## What is convolution?
 
 Convolution is a mathematical operation that combines two signals to produce a third signal:
 
@@ -23,41 +23,41 @@ Where:
 
 ### Applications
 
-- **Digital Signal Processing**: Filtering, noise reduction
-- **Image Processing**: Blur, sharpen, edge detection
-- **System Analysis**: Characterizing linear time-invariant systems
-- **Audio Processing**: Reverb, echo effects
-- **Neural Networks**: Convolutional layers for feature extraction
+- **Digital signal processing**: Filtering, noise reduction
+- **Image processing**: Blur, sharpen, edge detection
+- **System analysis**: Characterizing linear time-invariant systems
+- **Audio processing**: Reverb, echo effects
+- **Neural networks**: Convolutional layers for feature extraction
 
 ## Features
 
-### Core Algorithms Implemented
+### Core algorithms implemented
 
-1. **Linear Convolution** (`convolve`)
+1. **Linear convolution** (`convolve`)
    - Direct time-domain implementation
    - O(N×M) complexity
    - Output length: N + M - 1
    - Implementation: `src/convolution_ops.c` lines 4-35
 
-2. **Circular Convolution** (`convolve_circular`)
+2. **Circular convolution** (`convolve_circular`)
    - Periodic boundary conditions
    - O(N²) complexity  
    - Output length: max(N, M)
    - Implementation: `src/convolution_ops.c` lines 38-70
 
-3. **FFT-based Convolution** (`convolve_fft`)
+3. **FFT-based convolution** (`convolve_fft`)
    - Frequency domain multiplication
    - O(N log N) complexity
    - Faster for large signals (>512 samples)
    - Implementation: `src/convolution_ops.c` lines 140-205
 
-4. **Custom FFT Implementation**
+4. **Custom FFT implementation**
    - Cooley-Tukey recursive algorithm
    - Power-of-2 FFT sizes
    - Forward (`fft_recursive`) and inverse (`ifft_recursive`) transforms
    - Implementation: `src/convolution_ops.c` lines 82-137
 
-### Signal Generation Functions
+### Signal generation functions
 
 All signal generators are implemented in `src/signal_generation.c`:
 
@@ -90,7 +90,7 @@ Signal* generate_gaussian_pulse(double amplitude, double sigma, double center,
                                double duration, double sample_rate);
 ```
 
-### Signal Processing Utilities
+### Signal processing utilities
 
 Implemented in `src/signal_generation.c` and `src/convolution_ops.c`:
 
@@ -119,55 +119,55 @@ void free_fft_result(FFTResult *result);
 
 ASCII-based plotting implemented in `src/visualization.c`:
 
-- **Enhanced Resolution**: 100x25 character plots (improved from 60x15)
-- **Automatic Scaling**: Dynamic y-axis scaling based on signal range
-- **Zero-line Indicator**: Horizontal axis at y=0
+- **Enhanced resolution**: 100x25 character plots (improved from 60x15)
+- **Automatic scaling**: Dynamic y-axis scaling based on signal range
+- **Zero-line indicator**: Horizontal axis at y=0
 - **Downsampling**: Automatic averaging for long signals
-- **FFT Magnitude Plots**: Frequency spectrum visualization
-- **Phase Information**: Optional phase spectrum display
+- **FFT magnitude plots**: Frequency spectrum visualization
+- **Phase information**: Optional phase spectrum display
 
-### Interactive Demos
+### Interactive demos
 
 The main application (`src/main.c`) provides 7 interactive demonstrations:
 
-1. **Basic Convolution Demo**
+1. **Basic convolution demo**
    - Compares linear vs circular convolution
    - Uses sine wave (5 Hz) and rectangular pulse
    - Shows output length differences
 
-2. **Signal Filtering**
+2. **Signal filtering**
    - Creates composite signal (50Hz + 300Hz + noise)
    - Applies moving average low-pass filter
    - Visualizes filtering effects
 
-3. **Frequency Analysis**
+3. **Frequency analysis**
    - FFT of various signal types
    - Demonstrates Convolution Theorem
    - Frequency domain visualization
 
-4. **System Impulse Response**
+4. **System impulse response**
    - Impulse and step responses
    - System characterization
    - Time-domain analysis
 
-5. **Custom Signal Generator**
+5. **Custom signal generator**
    - Interactive signal creation
    - Parameter configuration
    - Real-time convolution
 
-6. **Performance Comparison**
+6. **Performance comparison**
    - Benchmarks direct vs FFT convolution
    - Shows crossover point (~512 samples)
    - Timing analysis
 
-7. **Interactive Tutorial**
+7. **Interactive tutorial**
    - Step-by-step walkthrough
    - Mathematical foundations
    - Visual demonstrations
 
-## Code Structure
+## Code structure
 
-### Data Structures
+### Data structures
 
 ```c
 // Signal representation (include/convolution.h)
@@ -196,9 +196,9 @@ typedef struct {
 } FFTResult;
 ```
 
-### Key Implementation Details
+### Key implementation details
 
-**Convolution Algorithm** (`src/convolution_ops.c:4-35`):
+**Convolution algorithm** (`src/convolution_ops.c:4-35`):
 ```c
 // Core convolution loop
 for (int n = 0; n < output_length; n++) {
@@ -218,19 +218,19 @@ for (int n = 0; n < output_length; n++) {
 }
 ```
 
-**FFT Cooley-Tukey Algorithm** (`src/convolution_ops.c:82-118`):
+**FFT Cooley-Tukey algorithm** (`src/convolution_ops.c:82-118`):
 - Recursive divide-and-conquer
 - Splits into even/odd indices
 - Combines with twiddle factors: `W_N^k = e^(-2πik/N)`
 - Automatically pads to next power of 2
 
-**Visualization Scaling** (`src/visualization.c:10-111`):
+**Visualization scaling** (`src/visualization.c:10-111`):
 - Finds min/max values for y-axis
 - Maps signal values to character positions
 - Handles downsampling for long signals
 - Provides zero-line reference
 
-## Quick Start
+## Quick start
 
 ### Prerequisites
 
@@ -254,7 +254,7 @@ make bin/convolution_explorer
 ./bin/convolution_explorer
 ```
 
-### Build System
+### Build system
 
 The Makefile provides these targets:
 
@@ -267,7 +267,7 @@ make test       # Run basic tests
 make help       # Show all targets
 ```
 
-### Example Usage
+### Example usage
 
 ```bash
 $ ./bin/convolution_explorer
@@ -290,9 +290,9 @@ $ ./bin/convolution_explorer
 Enter your choice (0-7): 1
 ```
 
-## Mathematical Background
+## Mathematical background
 
-### Discrete Convolution Formula
+### Discrete convolution formula
 
 For finite signals x[n] (length N) and h[n] (length M):
 
@@ -301,14 +301,14 @@ y[n] = Σ x[k] × h[n-k],  for n = 0 to N+M-2
      k=0 to N-1
 ```
 
-### Implementation Steps
+### Implementation steps
 
 1. **Flip**: Reverse kernel h[n] → h[-n]
 2. **Shift**: Slide kernel by n samples → h[n-k]
 3. **Multiply**: Element-wise multiplication with x[k]
 4. **Sum**: Add all products
 
-### Linear vs Circular Convolution
+### Linear vs circular convolution
 
 | Property | Linear | Circular |
 |----------|--------|----------|
@@ -317,7 +317,7 @@ y[n] = Σ x[k] × h[n-k],  for n = 0 to N+M-2
 | Use Case | Filtering, system analysis | Frequency domain |
 | Code | `convolve()` | `convolve_circular()` |
 
-### Convolution Theorem
+### Convolution theorem
 
 ```
 F{x * h} = F{x} × F{h}
@@ -328,7 +328,7 @@ Where F{} denotes Fourier transform. This enables:
 - Fast convolution via FFT: O(N log N) vs O(N²)
 - Implemented in `convolve_fft()`
 
-### FFT Implementation
+### FFT implementation
 
 The Cooley-Tukey algorithm recursively:
 
@@ -338,9 +338,9 @@ The Cooley-Tukey algorithm recursively:
 
 Time complexity: O(N log N) for N = power of 2
 
-## Performance Characteristics
+## Performance characteristics
 
-### Algorithm Comparison
+### Algorithm comparison
 
 Measured on typical hardware:
 
@@ -353,19 +353,19 @@ Measured on typical hardware:
 
 **Crossover Point**: ~512 samples (where FFT becomes faster)
 
-### Memory Usage
+### Memory usage
 
 - **Signal**: 24 bytes + 8N bytes (N = length)
-- **FFT Buffer**: 16N bytes (N = next power of 2)
+- **FFT buffer**: 16N bytes (N = next power of 2)
 - **FFTResult**: 40N + 32 bytes
 
-## File Format
+## File format
 
-### CSV Signal Format
+### CSV signal format
 
 ```csv
-# Signal Name
-# Sample Rate: 44100.0 Hz
+# Signal name
+# Sample rate: 44100.0 hz
 # Length: 1000 samples
 # Duration: 0.022676 seconds
 Time,Amplitude
@@ -379,7 +379,7 @@ Load with: `Signal* sig = load_signal_from_file("signal.csv");`
 
 ## Troubleshooting
 
-### Compilation Issues
+### Compilation issues
 
 ```bash
 # Check dependencies
@@ -388,17 +388,17 @@ make check-deps
 # Debug build for more information
 make debug
 
-# Verify C99 support
+# Verify c99 support
 gcc --version
 ```
 
-### Runtime Issues
+### Runtime issues
 
 - **Memory**: Ensure sufficient RAM for large signals (4096 samples ≈ 128 KB)
-- **FFT Size**: Automatically padded to power of 2
-- **Terminal Width**: Plots optimized for 80+ column terminals
+- **FFT size**: Automatically padded to power of 2
+- **Terminal width**: Plots optimized for 80+ column terminals
 
-### Common Errors
+### Common errors
 
 ```c
 // Error: Signal is NULL
@@ -412,9 +412,9 @@ FILE *f = fopen(filename, "r");
 if (!f) { perror("Cannot open file"); }
 ```
 
-## API Reference
+## API reference
 
-### Core Functions
+### Core functions
 
 ```c
 // Create/destroy signals
@@ -453,30 +453,30 @@ Signal* load_signal_from_file(const char *filename);
 
 This is an educational project. To extend:
 
-1. **New Signal Types**: Add to `signal_generation.c`
-2. **New Algorithms**: Add to `convolution_ops.c`
-3. **Better Visualization**: Enhance `visualization.c`
-4. **More Demos**: Expand `main.c`
+1. **New signal types**: Add to `signal_generation.c`
+2. **New algorithms**: Add to `convolution_ops.c`
+3. **Better visualization**: Enhance `visualization.c`
+4. **More demos**: Expand `main.c`
 
-### Code Style
+### Code style
 
 - **Standard**: C99
 - **Naming**: snake_case for functions, PascalCase for types
 - **Comments**: Comprehensive function headers
 - **Memory**: Always pair malloc/free
-- **Error Handling**: Check all allocations
+- **Error handling**: Check all allocations
 
-## Educational Value
+## Educational value
 
-### Learning Objectives
+### Learning objectives
 
-- **Mathematical Foundations**: Understand discrete convolution formula
+- **Mathematical foundations**: Understand discrete convolution formula
 - **Implementation**: Direct and FFT-based algorithms
 - **Applications**: Filtering, system analysis, signal processing
 - **Visualization**: Time and frequency domain representations
 - **Performance**: Algorithm complexity and optimization
 
-### Concepts Covered
+### Concepts covered
 
 1. Discrete-time signals and systems
 2. Linear time-invariant (LTI) systems
@@ -497,30 +497,30 @@ MIT License - Educational use
 3. Popular science and AI knowledge-sharing materials
 4. Digital signal processing textbooks and tutorials
 
-## Recent Updates
+## Recent updates
 
 ### Version 1.1 (2025-09-29)
 
-- ✨ Improved ASCII visualization resolution (50-67% increase)
-- ✨ Enhanced plot dimensions: 100x25 (from 60x15)
-- ✨ Better signal clarity and educational value
-- 🔧 Added comprehensive build script (build.sh)
-- 📚 Added BUILD.md documentation
+-  Improved ASCII visualization resolution (50-67% increase)
+-  Enhanced plot dimensions: 100x25 (from 60x15)
+-  Better signal clarity and educational value
+-  Added comprehensive build script (build.sh)
+-  Added BUILD.md documentation
 
 ### Version 1.0 (2025-09-27)
 
-- 🎉 Initial release
-- ✅ Complete convolution implementations
-- ✅ Custom FFT (Cooley-Tukey)
-- ✅ 7 signal generators
-- ✅ ASCII visualization
-- ✅ Interactive demos
-- ✅ Cross-platform C99
+-  Initial release
+-  Complete convolution implementations
+-  Custom FFT (Cooley-Tukey)
+-  7 signal generators
+-  ASCII visualization
+-  Interactive demos
+-  Cross-platform C99
 
-## Project Statistics
+## Project statistics
 
 - **Language**: C (100%)
-- **Total Lines**: ~2,500 (code + comments)
+- **Total lines**: ~2,500 (code + comments)
 - **Files**: 4 source files + 1 header
 - **Functions**: 30+ documented functions
 - **Dependencies**: None (stdlib + libm only)
@@ -528,4 +528,4 @@ MIT License - Educational use
 
 ---
 
-**Built with ❤️ for signal processing education**
+**Built specifically for signal processing education. I wished for such a tool when I was studying these complex concepts.**
